@@ -29,8 +29,7 @@ BinarySearchTree.prototype.contains = function(value, node, result) {
   if (node.value === value) {
     //if node's value matches value, pass result as true
     result = true;
-  }
-  if (value < node.value && node.left) {
+  } else if (value < node.value && node.left) {
     //recurse contains on the left child of node
     result = this.contains(value, node.left, result);
   } else if (value > node.value && node.right) {
