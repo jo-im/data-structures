@@ -23,6 +23,24 @@ describe('doublyLinkedList', function() {
     expect(doublyLinkedList.tail.value).to.equal(5);
   });
 
+  //New test for advanced content
+  //Tests whether node's previous value is set when new tail is added
+  it('should show previous value of new tail when new nodes are added', function() {
+    doublyLinkedList.addToTail(4);
+    expect(doublyLinkedList.tail.previous).to.equal(null);
+    doublyLinkedList.addToTail(5);
+    expect(doublyLinkedList.tail.previous.value).to.equal(4);
+  });
+
+  //New test 
+  //Test that tail.next is always null
+  it ('should always give null value for tail.next', function() {
+    doublyLinkedList.addToTail(4);
+    expect(doublyLinkedList.tail.next).to.equal(null);
+    doublyLinkedList.addToTail(5);
+    expect(doublyLinkedList.tail.next).to.equal(null);
+  });
+
   it('should remove the head from the list when removeHead is called', function() {
     doublyLinkedList.addToTail(4);
     doublyLinkedList.addToTail(5);
@@ -54,10 +72,16 @@ describe('doublyLinkedList', function() {
   it('should add a value to the front of the list', function() {
     doublyLinkedList.addToHead(4);
     expect(doublyLinkedList.head.value).to.equal(4);
+    doublyLinkedList.addToHead(5);
+    expect(doublyLinkedList.head.value).to.equal(5);
   });
 
   it ('should remove the last node from the list and returns its value', function() {
-    doublyLinkedList.removeTail();
+    doublyLinkedList.addToTail(4);
+    doublyLinkedList.addToTail(5);
+    expect(doublyLinkedList.tail.previous.value).to.equal(4);
+    expect(doublyLinkedList.removeTail()).to.equal(5);
+    expect(doublyLinkedList.removeTail()).to.equal(4);
   });
   // add more tests here to test the functionality of doublyLinkedList
 });
